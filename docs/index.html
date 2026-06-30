@@ -3,23 +3,150 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>별 강화하기 정책 문서</title>
+  <title>별 강화하기 — 운석 파편으로 별을 키워 특이점에 도전하는 우주 성장 게임</title>
+  <meta name="description" content="작은 운석 조각에서 시작해 행성, 항성, 블랙홀을 지나 특이점까지. 재료를 골라 강화 버튼을 누르는 우주 테마 성장 게임 '별 강화하기'.">
+  <meta property="og:title" content="별 강화하기">
+  <meta property="og:description" content="운석 파편으로 별을 강화해 특이점에 도전하는 우주 성장 게임">
+  <meta property="og:type" content="website">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; margin: 0; color: #172033; background: #f7f9fc; }
-    main { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; background: #fff; min-height: 100vh; }
-    h1 { color: #081528; font-size: 30px; }
-    ul { padding-left: 22px; }
-    a { color: #005bd3; font-weight: 700; }
+    :root{
+      --gold:#f2c879; --gold-soft:#ffe3a6; --gold-line:rgba(242,200,121,.28);
+      --ink:#d6dffb; --muted:#8a99c4; --panel:rgba(17,28,56,.66);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",
+        "Noto Sans KR",sans-serif;
+      color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased;
+      background:
+        radial-gradient(1100px 600px at 78% -8%, rgba(123,108,255,.20), transparent 60%),
+        radial-gradient(900px 520px at 12% 8%, rgba(74,140,255,.16), transparent 60%),
+        radial-gradient(700px 480px at 50% 120%, rgba(242,200,121,.10), transparent 60%),
+        #070b18;
+      min-height:100vh;
+    }
+    /* 별 입자 */
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.55;
+      background-image:
+        radial-gradient(1.4px 1.4px at 20% 30%, #fff, transparent),
+        radial-gradient(1.4px 1.4px at 70% 18%, #cfe0ff, transparent),
+        radial-gradient(1.2px 1.2px at 40% 70%, #fff, transparent),
+        radial-gradient(1.6px 1.6px at 88% 60%, #ffe9c0, transparent),
+        radial-gradient(1.1px 1.1px at 12% 82%, #dfe9ff, transparent),
+        radial-gradient(1.3px 1.3px at 58% 44%, #fff, transparent);
+      background-repeat:no-repeat;
+    }
+    main{position:relative; max-width:880px; margin:0 auto; padding:0 20px 72px}
+    /* 히어로 */
+    .hero{text-align:center; padding:84px 0 40px}
+    .crest{
+      width:74px; height:74px; margin:0 auto 22px; border-radius:18px;
+      display:grid; place-items:center; font-size:34px;
+      background:linear-gradient(160deg, rgba(242,200,121,.22), rgba(123,108,255,.20));
+      border:1.5px solid var(--gold-line);
+      box-shadow:0 0 40px rgba(242,200,121,.18), inset 0 0 24px rgba(255,255,255,.05);
+    }
+    h1{
+      margin:0; font-size:clamp(34px,7vw,54px); letter-spacing:-.5px; line-height:1.12;
+      background:linear-gradient(180deg,#fff 12%, var(--gold-soft) 60%, var(--gold) 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow:0 0 28px rgba(242,200,121,.12);
+    }
+    .tagline{margin:18px auto 0; max-width:560px; font-size:clamp(15px,3.4vw,19px); color:var(--ink)}
+    .badges{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:26px 0 0}
+    .badge{
+      font-size:13px; font-weight:700; padding:7px 13px; border-radius:999px;
+      color:var(--gold-soft); background:rgba(242,200,121,.08);
+      border:1px solid var(--gold-line);
+    }
+    /* 패널 */
+    .panel{
+      margin-top:30px; padding:28px 24px; border-radius:18px;
+      background:var(--panel); border:1px solid rgba(255,255,255,.07);
+      box-shadow:0 18px 50px rgba(2,6,20,.45), inset 0 1px 0 rgba(255,255,255,.04);
+      backdrop-filter:blur(6px);
+    }
+    .panel.framed{border:1.5px solid var(--gold-line)}
+    .lead{font-size:clamp(15px,3.2vw,18px); margin:0; color:#e7edff}
+    .lead b{color:var(--gold-soft)}
+    h2{
+      margin:0 0 4px; font-size:13px; font-weight:800; letter-spacing:2px;
+      text-transform:uppercase; color:var(--gold);
+    }
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px}
+    .feature{
+      padding:18px; border-radius:14px; background:rgba(9,16,36,.55);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .feature .ico{font-size:24px; line-height:1}
+    .feature h3{margin:10px 0 6px; font-size:16px; color:#fff}
+    .feature p{margin:0; font-size:14px; color:var(--muted)}
+    /* 푸터 */
+    footer{margin-top:46px; text-align:center; color:var(--muted); font-size:14px}
+    .links{display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:center; margin-bottom:18px}
+    .links a{color:var(--gold-soft); text-decoration:none; font-weight:700}
+    .links a:hover{text-decoration:underline}
+    .mail a{color:var(--ink); text-decoration:none}
+    .copy{margin-top:12px; font-size:12.5px; color:#5d6a90}
+    .note{font-size:13px; color:var(--muted); margin-top:14px}
   </style>
 </head>
 <body>
 <main>
-  <h1>별 강화하기 정책 문서</h1>
-  <p>스토어 등록 및 앱 내 링크에서 사용하는 공개 정책 문서입니다.</p>
-  <ul>
-    <li><a href="./privacy.html">개인정보처리방침</a></li>
-    <li><a href="./terms.html">이용약관</a></li>
-  </ul>
+  <section class="hero">
+    <div class="crest">⭐</div>
+    <h1>별 강화하기</h1>
+    <p class="tagline">운석 파편으로 별을 강화해 <b>특이점</b>에 도전하는 우주 성장 게임</p>
+    <div class="badges">
+      <span class="badge">무료</span>
+      <span class="badge">만 13세 이상</span>
+      <span class="badge">인앱결제 없음</span>
+      <span class="badge">선택형 광고</span>
+    </div>
+  </section>
+
+  <section class="panel framed">
+    <p class="lead">작은 운석 조각에서 시작해 행성, 항성, 블랙홀을 지나 <b>특이점</b>까지 도전하세요.
+    재료를 고르고 강화 버튼을 누르면 별은 더 강하고 화려하게 성장합니다. 다만 고강화 구간에서는
+    <b>실패와 소멸</b>의 위험도 함께 커집니다.</p>
+  </section>
+
+  <section class="panel">
+    <h2>게임 특징</h2>
+    <div class="grid">
+      <div class="feature"><div class="ico">🌌</div><h3>0강 → 30강 특이점</h3>
+        <p>작은 운석 조각에서 시작해 특이점까지 이어지는 긴 강화 여정.</p></div>
+      <div class="feature"><div class="ico">🪨</div><h3>5종 재료</h3>
+        <p>운석 파편부터 원초의 별까지. 재료마다 성공률과 사용 구간이 다릅니다.</p></div>
+      <div class="feature"><div class="ico">🎲</div><h3>성공·대성공·실패·균열·소멸</h3>
+        <p>높은 단계일수록 한 번의 선택이 더 무겁게 다가오는 긴장감.</p></div>
+      <div class="feature"><div class="ico">🕳️</div><h3>블랙홀과 특이점</h3>
+        <p>행성과 항성을 넘어 희귀한 블랙홀, 그리고 특이점에 도전.</p></div>
+      <div class="feature"><div class="ico">📖</div><h3>도감</h3>
+        <p>행성 모양과 강화 기록을 모으는 수집의 재미.</p></div>
+      <div class="feature"><div class="ico">🚀</div><h3>별 채굴 미니게임</h3>
+        <p>직접 조작하는 채굴 미니게임으로 재료를 추가로 확보.</p></div>
+      <div class="feature"><div class="ico">🏆</div><h3>업적</h3>
+        <p>성공도 실패도, 균열도 모두 기록이 되는 업적 시스템.</p></div>
+      <div class="feature"><div class="ico">✨</div><h3>나만의 별</h3>
+        <p>재료를 모으고 확률을 확인하며 나만의 별을 특이점까지.</p></div>
+    </div>
+    <p class="note">※ 만 13세 이상 이용가입니다. 보상형 광고는 사용자가 직접 선택한 경우에만 표시됩니다.</p>
+  </section>
+
+  <footer>
+    <div class="panel" style="margin-top:30px">
+      <div class="links">
+        <a href="./privacy.html">개인정보처리방침</a>
+        <a href="./terms.html">이용약관</a>
+        <a href="./support.html">지원 · 문의</a>
+      </div>
+      <div class="mail">문의: <a href="mailto:ohc4252@gmail.com">ohc4252@gmail.com</a></div>
+      <div class="copy">© 2026 별 강화하기 (StarForge). All rights reserved.</div>
+    </div>
+  </footer>
 </main>
 </body>
 </html>

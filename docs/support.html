@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>별 강화하기 — 지원 · 고객센터</title>
+  <meta name="description" content="별 강화하기(StarForge) 고객 지원. 문의는 ohc4252@gmail.com 으로 보내주세요. 자주 묻는 질문 안내.">
+  <style>
+    :root{
+      --gold:#f2c879; --gold-soft:#ffe3a6; --gold-line:rgba(242,200,121,.28);
+      --ink:#d6dffb; --muted:#8a99c4; --panel:rgba(17,28,56,.66);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",
+        "Noto Sans KR",sans-serif;
+      color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased;
+      background:
+        radial-gradient(1000px 560px at 80% -10%, rgba(123,108,255,.18), transparent 60%),
+        radial-gradient(820px 480px at 10% 6%, rgba(74,140,255,.14), transparent 60%),
+        #070b18;
+      min-height:100vh;
+    }
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.5;
+      background-image:
+        radial-gradient(1.4px 1.4px at 22% 28%, #fff, transparent),
+        radial-gradient(1.3px 1.3px at 72% 16%, #cfe0ff, transparent),
+        radial-gradient(1.2px 1.2px at 42% 72%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 86% 58%, #ffe9c0, transparent),
+        radial-gradient(1.1px 1.1px at 14% 84%, #dfe9ff, transparent);
+      background-repeat:no-repeat;
+    }
+    main{position:relative; max-width:760px; margin:0 auto; padding:0 20px 72px}
+    .top{text-align:center; padding:72px 0 8px}
+    .eyebrow{font-size:12px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--gold)}
+    h1{
+      margin:10px 0 0; font-size:clamp(28px,6vw,40px); line-height:1.15;
+      background:linear-gradient(180deg,#fff 18%, var(--gold-soft) 70%, var(--gold) 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .sub{margin:14px auto 0; max-width:520px; color:var(--muted)}
+    .panel{
+      margin-top:24px; padding:26px 24px; border-radius:18px;
+      background:var(--panel); border:1px solid rgba(255,255,255,.07);
+      box-shadow:0 18px 50px rgba(2,6,20,.45), inset 0 1px 0 rgba(255,255,255,.04);
+      backdrop-filter:blur(6px);
+    }
+    .panel.framed{border:1.5px solid var(--gold-line)}
+    h2{margin:0 0 6px; font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--gold)}
+    .contact{display:flex; flex-wrap:wrap; align-items:center; gap:14px; justify-content:space-between}
+    .contact .who{font-size:15px; color:#e7edff}
+    .btn{
+      display:inline-block; padding:12px 22px; border-radius:12px; font-weight:800; font-size:15px;
+      color:#1a1304; text-decoration:none;
+      background:linear-gradient(180deg,#ffe6ad,#f2c879);
+      box-shadow:0 8px 24px rgba(242,200,121,.25);
+    }
+    .reply{margin:14px 0 0; font-size:13.5px; color:var(--muted)}
+    .faq{margin-top:8px}
+    .faq details{
+      border-top:1px solid rgba(255,255,255,.08); padding:14px 2px;
+    }
+    .faq details:first-of-type{border-top:none}
+    .faq summary{
+      cursor:pointer; list-style:none; font-weight:700; font-size:16px; color:#fff;
+      display:flex; align-items:center; gap:10px;
+    }
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::before{content:"✦"; color:var(--gold); font-size:13px}
+    .faq p{margin:10px 0 2px 23px; color:var(--ink); font-size:14.5px}
+    .faq a{color:var(--gold-soft)}
+    footer{margin-top:40px; text-align:center; color:var(--muted); font-size:14px}
+    .links{display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:center}
+    .links a{color:var(--gold-soft); text-decoration:none; font-weight:700}
+    .links a:hover{text-decoration:underline}
+    .copy{margin-top:14px; font-size:12.5px; color:#5d6a90}
+  </style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <div class="eyebrow">Support</div>
+    <h1>별 강화하기 · 고객센터</h1>
+    <p class="sub">문의, 버그 제보, 의견은 언제든 환영합니다. 아래 이메일로 보내주세요.</p>
+  </div>
+
+  <section class="panel framed">
+    <div class="contact">
+      <div class="who">📮 문의 이메일<br><b style="color:#fff">ohc4252@gmail.com</b></div>
+      <a class="btn" href="mailto:ohc4252@gmail.com?subject=%5B%EB%B3%84%20%EA%B0%95%ED%99%94%ED%95%98%EA%B8%B0%5D%20%EB%AC%B8%EC%9D%98">메일 보내기</a>
+    </div>
+    <p class="reply">보통 며칠 이내에 답변드립니다. 오류 제보 시 기기 모델과 상황을 함께 적어 주시면 도움이 됩니다.</p>
+  </section>
+
+  <section class="panel">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq">
+      <details open>
+        <summary>유료 게임인가요? 결제가 필요한가요?</summary>
+        <p>아니요. <b>완전 무료</b>이며 인앱결제가 전혀 없습니다. 보상형 광고는 사용자가
+        직접 버튼을 눌러 선택한 경우에만 표시되고, 시청은 항상 선택 사항입니다.</p>
+      </details>
+      <details>
+        <summary>광고가 표시되지 않거나 보상을 받지 못했어요.</summary>
+        <p>먼저 인터넷 연결 상태를 확인해 주세요. 광고 재고 상황에 따라 일시적으로 표시되지
+        않을 수 있으며, 잠시 후 다시 시도하면 정상적으로 표시됩니다. 계속 문제가 있으면
+        위 이메일로 알려 주세요.</p>
+      </details>
+      <details>
+        <summary>강화하던 별이나 기록이 사라졌어요.</summary>
+        <p>진행 데이터는 기기 내부에 저장됩니다. 앱 삭제, 기기 초기화, 기기 변경 시에는
+        데이터가 이전되지 않을 수 있는 점 양해 부탁드립니다.</p>
+      </details>
+      <details>
+        <summary>강화 확률은 어떻게 정해지나요?</summary>
+        <p>단계와 사용한 재료에 따라 성공·대성공·실패·균열·소멸 확률이 달라지며, 강화 화면에
+        현재 성공 확률이 표시됩니다. 실제 현금이 걸린 베팅이나 환전 요소는 없습니다.</p>
+      </details>
+      <details>
+        <summary>이용 연령은 어떻게 되나요?</summary>
+        <p>만 13세 이상 이용 가능합니다.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="./index.html">홈</a>
+      <a href="./privacy.html">개인정보처리방침</a>
+      <a href="./terms.html">이용약관</a>
+    </div>
+    <div class="copy">© 2026 별 강화하기 (StarForge)</div>
+  </footer>
+</main>
+</body>
+</html>
